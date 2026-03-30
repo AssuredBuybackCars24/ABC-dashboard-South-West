@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABC Championship – SOUTH – BFL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   CARS24 x IPL THEME — COMPLETE OVERRIDE
+   Blue: #0033A0  Orange: #FF6B00
+═══════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Keyframes ── */
+@keyframes scan2{0%{top:-6px}100%{top:100%}}
+@keyframes ticker2{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes shimmer2{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes rowIn2{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes blink2{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes stadiumPulse{0%,100%{box-shadow:0 0 40px #0033A015,0 0 80px #FF6B0008}50%{box-shadow:0 0 60px #0033A025,0 0 120px #FF6B0015}}
+@keyframes orangeBlaze{0%,100%{text-shadow:0 0 10px #FF6B00,0 0 30px #FF8C0088,0 0 60px #FF6B0044}50%{text-shadow:0 0 20px #FF8C00,0 0 50px #FFB00088,0 0 90px #FF6B0066}}
+@keyframes blueGlow{0%,100%{text-shadow:0 0 10px #4477FF,0 0 25px #0033A088}50%{text-shadow:0 0 20px #6699FF,0 0 45px #0033A0aa}}
+@keyframes marCountdown{0%,100%{text-shadow:0 0 12px #FF6B00,0 0 35px #FF8C00aa,0 0 70px #FF6B0055;opacity:1}50%{text-shadow:0 0 22px #FFB000,0 0 55px #FF8C00cc,0 0 100px #FF6B0077;opacity:.88}}
+@keyframes raceStripe{0%{background-position:0% 0%}100%{background-position:200% 0%}}
+@keyframes aprPulse{0%,100%{box-shadow:0 0 0 0 #FF6B0000;background:linear-gradient(135deg,#1a0800,#220a00)}50%{box-shadow:0 0 0 5px #FF6B0020;background:linear-gradient(135deg,#221000,#2a1200)}}
+@keyframes iplEntrance{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spotlightL{0%,100%{opacity:.06}50%{opacity:.12}}
+@keyframes spotlightR{0%,100%{opacity:.08}50%{opacity:.14}}
+@keyframes crunchPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+@keyframes liveDot{0%,100%{opacity:1;box-shadow:0 0 0 0 #FF6B0066}50%{opacity:.6;box-shadow:0 0 0 4px #FF6B0000}}
+
+/* ── GLOBAL ── */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:radial-gradient(ellipse at 30% 0%,#001a5c 0%,#000d2e 40%,#020810 100%);
+  min-height:100vh;font-family:'Montserrat',sans-serif;color:#fff;
+}
+
+/* Stadium spotlights */
+body::before,body::after{
+  content:'';position:fixed;top:-40%;width:35%;height:120%;
+  border-radius:50%;pointer-events:none;z-index:0;
+}
+body::before{left:-10%;background:radial-gradient(ellipse,#1A56DB 0%,transparent 65%);animation:spotlightL 6s ease-in-out infinite;}
+body::after{right:-10%;background:radial-gradient(ellipse,#FF6B00 0%,transparent 65%);animation:spotlightR 7s ease-in-out infinite 1s;}
+
+/* ── SCAN BAR ── */
+.scanbar{
+  position:absolute;left:0;right:0;height:5px;
+  background:linear-gradient(transparent,#1A56DB44,transparent);
+  animation:scan2 7s linear infinite;pointer-events:none;z-index:10;
+}
+.scanbar2{
+  position:absolute;left:0;right:0;height:3px;
+  background:linear-gradient(transparent,#FF6B0033,transparent);
+  animation:scan2 7s linear infinite 3.5s;pointer-events:none;z-index:10;
+}
+
+/* ── DASH CONTAINER ── */
+.dash{
+  position:relative;max-width:1240px;margin:0 auto;
+  background:linear-gradient(180deg,#03081c 0%,#020810 60%,#030912 100%);
+  border:1px solid #1A56DB33;
+  overflow:hidden;z-index:1;
+  animation:stadiumPulse 5s ease-in-out infinite;
+}
+.layer{position:relative;z-index:2;}
+
+/* ── HEADER ── */
+.hdr{
+  background:linear-gradient(135deg,#040e2e 0%,#071540 40%,#060e2a 100%);
+  border-bottom:4px solid transparent;
+  padding:14px 20px;
+  display:grid;grid-template-columns:190px 1fr 220px;align-items:center;gap:14px;
+  position:relative;overflow:hidden;
+}
+.hdr::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#0033A0,#1A56DB,#FF6B00,#FF8C00,#FF6B00,#1A56DB,#0033A0);
+  background-size:300% 100%;animation:raceStripe 2.5s linear infinite;
+}
+/* IPL diagonal stripe overlay */
+.hdr::before{
+  content:'';position:absolute;top:0;right:0;width:45%;height:100%;
+  background:linear-gradient(135deg,transparent 30%,#FF6B0008 50%,transparent 70%);
+  pointer-events:none;
+}
+
+.reg-tag{
+  font-size:10px;letter-spacing:6px;color:#FF8C00;font-weight:900;
+  text-shadow:0 0 15px #FF6B0099;text-transform:uppercase;
+}
+.main-title{font-size:34px;letter-spacing:3px;line-height:1;font-weight:900;text-transform:uppercase;}
+.main-title span{
+  background:linear-gradient(90deg,#FF6B00,#FFB000,#fff,#FFB000,#FF6B00);
+  background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer2 3s linear infinite;
+}
+.hdr-date{font-size:9px;letter-spacing:2px;color:#5577aa;margin-top:5px;font-weight:600;}
+
+/* ── TRIP BLOCK (centre) ── */
+.trip-block{
+  text-align:center;
+  border-left:1px solid #1A56DB22;border-right:1px solid #1A56DB22;
+  padding:0 14px;
+}
+.trip-eye{font-size:10px;letter-spacing:5px;color:#FF6B00;font-weight:900;text-shadow:0 0 12px #FF6B0077;}
+.trip-word{
+  font-size:27px;letter-spacing:3px;font-weight:900;
+  background:linear-gradient(90deg,#FF6B00,#FFD000,#fff,#FFD000,#FF6B00);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer2 2.5s linear infinite;
+}
+.dest-pill{
+  margin-top:6px;display:inline-block;padding:4px 14px;
+  background:linear-gradient(90deg,#FF6B0018,#FF8C0022);
+  border:1px solid #FF6B0055;border-radius:3px;
+}
+.dest-pill-lbl{font-size:9px;letter-spacing:2px;color:#FF8C00;font-weight:800;}
+
+/* ── MARCH TIMER (right col) ── */
+.timer-block{display:block;}
+.timer-box{background:#0a1828;border:1px solid #1a2640;border-radius:4px;padding:8px 10px;text-align:center;}
+.timer-box.mar{
+  background:linear-gradient(160deg,#1a0c00,#120800);
+  border:2px solid #FF6B00;border-radius:6px;
+  padding:12px 8px;position:relative;overflow:visible;
+  box-shadow:0 0 20px #FF6B0033,inset 0 0 20px #FF6B0010;
+}
+.timer-box.apr{display:none;}
+.tb-lbl{font-size:9px;letter-spacing:3px;font-weight:900;margin-bottom:5px;text-transform:uppercase;}
+.mar .tb-lbl{
+  color:#FF8C00;font-size:9px;letter-spacing:3px;
+  text-shadow:0 0 10px #FF6B0099;
+  animation:orangeBlaze 1.4s ease-in-out infinite;
+}
+.tb-nums{display:flex;gap:2px;justify-content:center;align-items:flex-start;}
+.tb-unit{text-align:center;min-width:36px;}
+.tb-num{font-size:16px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;}
+.mar .tb-num{
+  font-size:36px !important;
+  color:#FF8C00;
+  animation:marCountdown 1.2s ease-in-out infinite;
+  font-variant-numeric:tabular-nums;
+  display:block;
+}
+.tb-ulab{font-size:7px;letter-spacing:2px;font-weight:800;margin-top:2px;display:block;}
+.mar .tb-ulab{color:#FF6B0099;font-size:8px;letter-spacing:2px;}
+.tb-colon{font-size:14px;color:#4a5870;font-weight:900;line-height:1;padding-top:2px;}
+.mar .tb-colon{font-size:30px !important;color:#FF6B0066;line-height:1;padding-top:4px;}
+.tb-dl{font-size:8px;font-weight:700;margin-top:5px;letter-spacing:2px;}
+.mar .tb-dl{color:#FF6B0077;animation:blink2 1.6s infinite;}
+
+/* ── APRIL INLINE ── */
+.apr-inline{
+  margin-top:8px;padding:7px 10px;
+  background:linear-gradient(135deg,#1a0800,#220a00);
+  border:2px solid #FF6B00;border-radius:4px;text-align:center;
+  animation:aprPulse 1.8s ease-in-out infinite;
+  box-shadow:0 0 12px #FF6B0022;
+}
+.ai-lbl{font-size:9px;letter-spacing:3px;color:#FF8C00;font-weight:900;margin-bottom:4px;text-shadow:0 0 8px #FF6B0066;}
+.ai-nums{display:flex;gap:3px;justify-content:center;align-items:center;}
+.ai-unit{text-align:center;min-width:26px;}
+.ai-num{font-size:22px;font-weight:900;color:#FF8C00;line-height:1;display:block;font-variant-numeric:tabular-nums;}
+.ai-ulab{font-size:8px;color:#FF6B0099;letter-spacing:2px;font-weight:800;display:block;}
+.ai-col{font-size:18px;color:#FF6B0055;font-weight:900;line-height:1.1;}
+.ai-dl{font-size:8px;color:#FF8C0088;font-weight:700;margin-top:3px;letter-spacing:1px;animation:blink2 1.8s infinite;}
+
+/* ── TICKER ── */
+.ticker{
+  background:linear-gradient(90deg,#0033A0,#1A56DB,#0044CC,#1A56DB,#0033A0);
+  background-size:300% 100%;animation:raceStripe 3s linear infinite;
+  overflow:hidden;white-space:nowrap;padding:6px 0;
+  border-top:1px solid #1A56DB44;border-bottom:1px solid #1A56DB44;
+}
+.ticker-inner{display:inline-block;animation:ticker2 28s linear infinite;}
+.tick-item{font-size:12px;letter-spacing:2px;color:#fff;padding:0 50px;font-weight:900;text-shadow:0 0 8px rgba(255,255,255,.3);}
+.tick-divider{font-size:16px;color:#FF8C00;padding:0 8px;font-weight:900;text-shadow:0 0 8px #FF6B0088;}
+
+/* ── PAN INDIA STRIP ── */
+.pan-strip{
+  background:linear-gradient(90deg,#040e28,#060f30,#040e28);
+  border-bottom:2px solid #1A56DB22;
+}
+.pan-hdr{
+  padding:7px 14px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid #1A56DB22;
+  background:linear-gradient(90deg,#050e28,#071540,#050e28);
+}
+.pan-lbl{font-size:11px;letter-spacing:5px;color:#4da6ff;font-weight:900;text-shadow:0 0 12px #1A56DB77;}
+.pan-sub{font-size:9px;letter-spacing:2px;color:#3a6090;font-weight:600;}
+.pan-stats{display:grid;grid-template-columns:repeat(3,1fr);}
+.ps{padding:9px 14px;border-right:1px solid #1A56DB22;}
+.ps:last-child{border-right:none;}
+.ps-tag{font-size:8px;padding:2px 6px;border-radius:2px;font-weight:900;letter-spacing:1px;display:inline-block;margin-bottom:4px;}
+.ytag{background:#FF6B0018;color:#FF8C00;border:1px solid #FF6B0040;}
+.mtag{background:#1A56DB18;color:#4da6ff;border:1px solid #1A56DB40;}
+.ps-num{font-size:28px;line-height:1;font-weight:900;}
+.ps-lbl{font-size:8px;letter-spacing:2px;color:#3a6090;font-weight:700;}
+.ps:hover{background:#071530;}
+
+/* ── REGION STATS ── */
+.reg-stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #1A56DB22;}
+.rstat{padding:10px 14px;border-right:1px solid #1A56DB22;position:relative;background:#030c1e;}
+.rstat:last-child{border-right:none;}
+.rstat:hover{background:#060f28;}
+.stag{position:absolute;top:7px;right:8px;font-size:8px;padding:2px 6px;border-radius:2px;font-weight:900;letter-spacing:1px;}
+.slbl{font-size:8px;letter-spacing:3px;font-weight:700;}
+.snum{font-size:30px;line-height:1.1;font-weight:900;}
+.ssub{font-size:9px;color:#3a6090;font-weight:600;margin-top:2px;}
+
+/* ── CONTROLS ── */
+.controls{display:flex;gap:10px;padding:9px 14px;background:#030c1e;border-bottom:1px solid #1A56DB22;flex-wrap:wrap;align-items:center;}
+.search-wrap{flex:1;min-width:160px;position:relative;}
+.search-wrap input{
+  width:100%;background:#060f28;border:1px solid #1A56DB33;color:#cce0ff;
+  padding:7px 10px 7px 32px;border-radius:3px;font-family:'Montserrat',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:1px;outline:none;transition:.2s;
+}
+.search-wrap input:focus{border-color:#FF6B00;box-shadow:0 0 0 2px #FF6B0022;background:#071535;}
+.search-wrap input::placeholder{color:#2a4a6a;}
+.si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:#2a4a6a;font-size:12px;}
+.fw{display:flex;gap:7px;align-items:center;}
+.fl{font-size:9px;letter-spacing:2px;color:#4477aa;font-weight:700;}
+.fsel{background:#060f28;border:1px solid #1A56DB33;color:#cce0ff;padding:7px 9px;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;outline:none;cursor:pointer;}
+.live-badge{
+  background:#FF6B0018;border:1px solid #FF6B0055;color:#FF8C00;
+  font-size:9px;letter-spacing:2px;padding:5px 10px;border-radius:2px;font-weight:900;
+  animation:liveDot 1.6s ease-in-out infinite;
+}
+.result-count{display:none;}
+
+/* ── SECTION HEADERS ── */
+.sec-hdr{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #1A56DB22;}
+.sec-hdr.sm-hdr{
+  background:linear-gradient(90deg,#030d28,#051540);
+  border-top:3px solid #1A56DB;
+}
+.sec-hdr.asm-hdr{
+  background:linear-gradient(90deg,#100420,#1a0830);
+  border-top:3px solid #FF6B00;
+}
+.sec-lbl{font-size:13px;letter-spacing:5px;font-weight:900;}
+.sm-hdr .sec-lbl{color:#4da6ff;text-shadow:0 0 15px #1A56DB77;}
+.asm-hdr .sec-lbl{color:#FF8C00;text-shadow:0 0 15px #FF6B0077;}
+.sec-sub{font-size:9px;letter-spacing:2px;color:#4a6a8a;font-weight:600;}
+.role-pill{font-size:8px;padding:3px 9px;border-radius:2px;font-weight:900;letter-spacing:1px;margin-left:auto;}
+.pill-sm{background:#1A56DB22;color:#4da6ff;border:1px solid #1A56DB55;}
+.pill-asm{background:#FF6B0022;color:#FF8C00;border:1px solid #FF6B0055;}
+
+/* ── TABLES ── */
+.twocol{display:grid;grid-template-columns:1fr 1fr;}
+.colL{border-right:1px solid #1A56DB18;}
+.col-hdr{padding:7px 12px;background:#040d22;border-bottom:1px solid #1A56DB18;display:flex;align-items:center;}
+.col-title{font-size:10px;letter-spacing:3px;color:#3a6090;font-weight:800;text-transform:uppercase;}
+.leg{display:flex;align-items:center;padding:5px 12px;border-bottom:1px solid #0d1c2e;gap:4px;background:#040d22;}
+.lg-pos{width:28px;font-size:8px;color:#3a6090;font-weight:800;letter-spacing:1px;}
+.lg-name{flex:1;font-size:8px;color:#3a6090;letter-spacing:1px;font-weight:800;}
+.lg-abc{width:30px;font-size:8px;color:#3a6090;text-align:center;font-weight:800;}
+.lg-dis{width:34px;font-size:8px;color:#3a6090;text-align:right;font-weight:800;}
+.lg-at{width:50px;font-size:8px;color:#3a6090;text-align:right;font-weight:800;letter-spacing:.5px;}
+
+/* ── DATA ROWS ── */
+.mrow{display:flex;align-items:center;padding:6px 12px;border-bottom:1px solid #0a1428;gap:4px;opacity:0;animation:rowIn2 .3s forwards;background:#030c1e;}
+.mrow:hover{background:#060f28;}
+.rpos{width:28px;font-size:11px;color:#3a6090;flex-shrink:0;font-weight:700;text-align:center;}
+.rname{flex:1;font-size:12px;color:#c8deff;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;}
+.rabc{font-size:20px;width:30px;text-align:center;flex-shrink:0;font-weight:900;}
+.rdis{font-size:10px;color:#3a6090;width:34px;text-align:right;flex-shrink:0;font-weight:600;}
+.rat{font-size:11px;width:50px;text-align:right;flex-shrink:0;font-weight:900;}
+
+.frow{display:flex;align-items:center;padding:6px 12px;border-bottom:1px solid #0a1428;gap:4px;opacity:0;animation:rowIn2 .3s forwards;background:#030c1e;}
+.frow:hover{background:#060f28;}
+.frabc{font-size:20px;width:30px;text-align:center;flex-shrink:0;font-weight:900;color:#FF8C00;}
+.frdis{font-size:10px;color:#3a6090;width:34px;text-align:right;flex-shrink:0;font-weight:600;}
+.frat{font-size:11px;width:50px;text-align:right;flex-shrink:0;font-weight:900;}
+.fempty{padding:24px;text-align:center;color:#2a4a6a;font-size:10px;font-weight:600;letter-spacing:2px;}
+
+/* ── PAGINATION ── */
+.page-nav{display:flex;gap:5px;padding:7px 12px;background:#030c1e;border-bottom:1px solid #0a1428;align-items:center;}
+.pg-btn{background:#060f28;border:1px solid #1A56DB33;color:#3a6090;padding:4px 10px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:.2s;}
+.pg-btn:hover{border-color:#FF6B00;color:#FF8C00;}
+.pg-btn.active{background:#FF6B0022;border-color:#FF6B00;color:#FF8C00;}
+.pg-lbl{font-size:8px;letter-spacing:2px;color:#2a4a6a;font-weight:700;margin-right:5px;}
+.pg-info{font-size:8px;color:#2a4060;margin-left:8px;font-weight:600;}
+
+/* ── FOOTER ── */
+.fomo{
+  background:linear-gradient(135deg,#04091e,#070e28);
+  padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  position:relative;overflow:hidden;
+}
+.fomo::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#0033A0,#1A56DB,#FF6B00,#FF8C00,#FF6B00,#1A56DB,#0033A0);
+  background-size:300% 100%;animation:raceStripe 2.5s linear infinite;
+}
+.fomo::after{
+  content:'🏆';position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  font-size:60px;opacity:.04;pointer-events:none;
+}
+.fhl{font-size:22px;letter-spacing:3px;color:#FF8C00;line-height:1.1;font-weight:900;text-shadow:0 0 20px #FF6B0055;}
+.fsub{font-size:9px;letter-spacing:2px;color:#3a6090;font-weight:600;margin-top:3px;}
+.fmid{text-align:center;flex:1;}
+.fend{text-align:right;}
+
+/* ── pAtC overrides (dynamic colour) ── keep high contrast blue/orange */
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hdr{grid-template-columns:1fr;text-align:center;gap:8px;}
+  .twocol{grid-template-columns:1fr;}
+  .colL{border-right:none;border-bottom:1px solid #1A56DB18;}
+  .reg-stats{grid-template-columns:1fr 1fr;}
+  .fomo{flex-direction:column;text-align:center;}
+  .controls{flex-direction:column;}
+}
+
+/* ── TOP 3 NAME BLINK HIGHLIGHT ── */
+@keyframes top1Glow{
+  0%,100%{color:#FFD700;text-shadow:0 0 10px #FFD700,0 0 25px #FF8C00aa;letter-spacing:.5px;}
+  50%    {color:#fff;   text-shadow:0 0 18px #FFD700,0 0 40px #FFB000cc,0 0 60px #FF6B0055;letter-spacing:1px;}
+}
+@keyframes top2Glow{
+  0%,100%{color:#c0c8e0;text-shadow:0 0 8px #8899bb66;}
+  50%    {color:#e8f0ff; text-shadow:0 0 14px #aabbd0,0 0 28px #667799aa;}
+}
+@keyframes top3Glow{
+  0%,100%{color:#cd9d6a;text-shadow:0 0 6px #b8743055;}
+  50%    {color:#e8b880; text-shadow:0 0 12px #cc8844,0 0 22px #aa662288;}
+}
+.top1-name{animation:top1Glow 1.4s ease-in-out infinite;font-weight:900 !important;font-size:13px !important;}
+.top2-name{animation:top2Glow 1.8s ease-in-out infinite;font-weight:900 !important;}
+.top3-name{animation:top3Glow 2.2s ease-in-out infinite;font-weight:800 !important;}
+.top1-row{background:linear-gradient(90deg,#16100200,#211500,#1a1000,#211500,#16100200) !important;border-left:2px solid #FFD70066 !important;}
+.top2-row{background:linear-gradient(90deg,#08101e00,#0d1830,#0a1428,#0d1830,#08101e00) !important;border-left:2px solid #6688aa44 !important;}
+.top3-row{background:linear-gradient(90deg,#12080000,#1c0f00,#160c00,#1c0f00,#12080000) !important;border-left:2px solid #9966443a !important;}
+
+
+
+/* ════════════════════════════════════════
+   INTERNATIONAL TRIP TRAVEL SCENE
+════════════════════════════════════════ */
+
+/* The plane flies left→right across the bottom quarter, level, smooth */
+@keyframes planeGlide{
+  0%  {left:-200px; opacity:0;}
+  4%  {opacity:1;}
+  96% {opacity:1;}
+  100%{left:calc(100vw + 200px); opacity:0;}
+}
+/* Cloud puffs drift slowly right */
+@keyframes cloudDrift{
+  0%  {transform:translateX(-120px); opacity:0;}
+  8%  {opacity:.55;}
+  90% {opacity:.55;}
+  100%{transform:translateX(calc(100vw + 120px)); opacity:0;}
+}
+/* Destination card rises and fades */
+@keyframes cardPop{
+  0%,100%{transform:translateY(0)   scale(1);   opacity:0;}
+  5%     {transform:translateY(-4px) scale(1);   opacity:0;}
+  15%    {transform:translateY(-4px) scale(1.04);opacity:1;}
+  80%    {transform:translateY(-4px) scale(1.04);opacity:1;}
+  95%    {transform:translateY(0)   scale(.96);  opacity:0;}
+}
+/* Engine trail dots */
+@keyframes trailDot{
+  0%  {opacity:.7; transform:scaleX(1);}
+  100%{opacity:0;  transform:scaleX(0);}
+}
+/* Destination icon rotate inside card */
+@keyframes iconSpin{
+  0%,18%  {opacity:1; transform:scale(1)   rotateY(0deg);}
+  22%,38% {opacity:0; transform:scale(.6)  rotateY(90deg);}
+  42%,58% {opacity:1; transform:scale(1)   rotateY(0deg);}
+  62%,78% {opacity:0; transform:scale(.6)  rotateY(90deg);}
+  82%,100%{opacity:1; transform:scale(1)   rotateY(0deg);}
+}
+/* Sun rays spin */
+@keyframes sunSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+/* Wave bob */
+@keyframes waveBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* ── WRAPPER — fixed, bottom strip ── */
+.travel-scene{
+  position:fixed; bottom:0; left:0; right:0; height:110px;
+  pointer-events:none; z-index:9990; overflow:hidden;
+}
+
+/* ── GROUND STRIP ── */
+.ground-strip{
+  position:absolute; bottom:0; left:0; right:0; height:28px;
+  background:linear-gradient(180deg,transparent,#00184488,#001844cc);
+}
+
+/* ── CLOUDS ── */
+.cloud{
+  position:absolute; bottom:62px;
+  animation:cloudDrift linear infinite;
+}
+.cloud svg{ filter:drop-shadow(0 2px 6px rgba(255,255,255,.15)); }
+
+/* ── AIRPLANE ── */
+.plane-fly{
+  position:absolute; bottom:48px; left:-200px;
+  animation:planeGlide linear infinite;
+}
+
+/* ── ENGINE TRAILS ── */
+.trail-wrap{
+  position:absolute; left:100%; top:50%;
+  display:flex; gap:5px; align-items:center;
+  transform:translateY(-50%);
+}
+.trail-dot{
+  width:22px; height:3px; border-radius:2px;
+  background:linear-gradient(90deg,rgba(255,200,100,.6),transparent);
+  animation:trailDot .6s ease-out infinite;
+}
+.trail-dot:nth-child(2){width:14px; animation-delay:.15s; opacity:.5;}
+.trail-dot:nth-child(3){width:8px;  animation-delay:.3s;  opacity:.3;}
+
+/* ── DESTINATION POSTCARD ── */
+.dest-card{
+  position:absolute; bottom:78px; left:-200px;
+  animation:planeGlide linear infinite;  /* same timing, offset via margin */
+  margin-left:90px;                       /* floats just ahead of the plane */
+}
+.dest-card-inner{
+  background:linear-gradient(135deg,rgba(2,12,40,.92),rgba(0,25,80,.88));
+  border:1px solid rgba(255,200,100,.45);
+  border-radius:10px; padding:7px 10px;
+  min-width:120px; text-align:center;
+  box-shadow:0 4px 20px rgba(255,140,0,.2), 0 0 0 1px rgba(255,200,100,.1);
+  animation:cardPop 18s ease-in-out infinite;
+  backdrop-filter:blur(4px);
+}
+.dest-icon{font-size:22px; display:block; line-height:1.2;}
+.dest-label{
+  font-size:7px; font-weight:900; letter-spacing:2px;
+  color:#FFD700; text-transform:uppercase; margin-top:2px;
+  font-family:'Montserrat',sans-serif;
+}
+.dest-sub{
+  font-size:6px; font-weight:600; letter-spacing:1px;
+  color:rgba(200,220,255,.6); margin-top:1px;
+  font-family:'Montserrat',sans-serif;
+}
+
+/* Arrow connector from card to plane */
+.card-arrow{
+  position:absolute; bottom:-8px; left:50%;
+  transform:translateX(-50%);
+  width:0; height:0;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:8px solid rgba(255,200,100,.4);
+}
+
+</style>
+</head>
+<body>
+<div class="dash">
+<div class="scanbar"></div><div class="scanbar2"></div>
+<div class="layer">
+
+<div class="travel-scene">
+  <!-- Clouds -->
+  <div class="cloud" style="animation-duration:38s; animation-delay:0s; bottom:65px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 40" width="90" height="40">
+  <ellipse cx="45" cy="28" rx="38" ry="12" fill="rgba(200,220,255,.18)"/>
+  <ellipse cx="32" cy="22" rx="18" ry="14" fill="rgba(200,220,255,.15)"/>
+  <ellipse cx="55" cy="20" rx="22" ry="16" fill="rgba(200,220,255,.17)"/>
+  <ellipse cx="45" cy="18" rx="14" ry="12" fill="rgba(220,235,255,.2)"/>
+</svg></div>
+  <div class="cloud" style="animation-duration:28s; animation-delay:12s; bottom:70px; opacity:.7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="60" height="30">
+  <ellipse cx="30" cy="20" rx="26" ry="9" fill="rgba(200,220,255,.14)"/>
+  <ellipse cx="20" cy="15" rx="14" ry="10" fill="rgba(200,220,255,.12)"/>
+  <ellipse cx="38" cy="14" rx="16" ry="11" fill="rgba(200,220,255,.13)"/>
+</svg></div>
+  <div class="cloud" style="animation-duration:45s; animation-delay:6s;  bottom:58px; opacity:.5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 40" width="90" height="40">
+  <ellipse cx="45" cy="28" rx="38" ry="12" fill="rgba(200,220,255,.18)"/>
+  <ellipse cx="32" cy="22" rx="18" ry="14" fill="rgba(200,220,255,.15)"/>
+  <ellipse cx="55" cy="20" rx="22" ry="16" fill="rgba(200,220,255,.17)"/>
+  <ellipse cx="45" cy="18" rx="14" ry="12" fill="rgba(220,235,255,.2)"/>
+</svg></div>
+
+  <!-- The airplane -->
+  <div class="plane-fly" style="animation-duration:18s; animation-delay:0s; transform:scaleX(-1);">
+    <div class="trail-wrap">
+      <div class="trail-dot"></div>
+      <div class="trail-dot"></div>
+      <div class="trail-dot"></div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 70" width="160" height="70">
+  <defs>
+    <linearGradient id="fuselage" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#f0f4ff"/>
+      <stop offset="50%"  style="stop-color:#d8e8ff"/>
+      <stop offset="100%" style="stop-color:#b0c8ee"/>
+    </linearGradient>
+    <linearGradient id="wing1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#c8daff"/>
+      <stop offset="100%" style="stop-color:#8aaedd"/>
+    </linearGradient>
+    <linearGradient id="engine1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#888"/>
+      <stop offset="100%" style="stop-color:#555"/>
+    </linearGradient>
+    <filter id="planeShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#001844" flood-opacity=".4"/>
+    </filter>
+    <!-- Cockpit window shine -->
+    <radialGradient id="cockpit" cx="40%" cy="30%" r="60%">
+      <stop offset="0%"   style="stop-color:#a8dfff"/>
+      <stop offset="100%" style="stop-color:#2266aa"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ENGINE INTAKE glow -->
+  <ellipse cx="84" cy="51" rx="7" ry="5.5" fill="#FF8C00" opacity=".25">
+    <animate attributeName="opacity" values=".2;.4;.2" dur="0.4s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- MAIN BODY fuselage -->
+  <path d="M18,28 Q30,18 55,20 L138,28 Q148,32 148,35 Q148,38 138,40 L55,44 Q30,46 18,38 Z"
+        fill="url(#fuselage)" filter="url(#planeShadow)"/>
+
+  <!-- NOSE cone -->
+  <path d="M18,28 Q8,33 4,35 Q8,37 18,38 Z" fill="#d0e0f0"/>
+
+  <!-- BLUE stripe along fuselage -->
+  <path d="M20,30 L138,30 L138,32 L20,32 Z" fill="#0033A0" opacity=".6"/>
+  <!-- ORANGE stripe -->
+  <path d="M20,32 L138,32 L138,33.5 L20,33.5 Z" fill="#FF6B00" opacity=".7"/>
+
+  <!-- CARS24 text on fuselage — subtle -->
+  <text x="70" y="39" font-size="5" font-weight="900" fill="#0033A0" opacity=".5"
+        font-family="Montserrat,sans-serif" letter-spacing="1">CARS24</text>
+
+  <!-- Cabin WINDOWS -->
+  <rect x="35"  y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".8"/>
+  <rect x="48"  y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".75"/>
+  <rect x="61"  y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".7"/>
+  <rect x="74"  y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".7"/>
+  <rect x="87"  y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".65"/>
+  <rect x="100" y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".6"/>
+  <rect x="113" y="23" width="8" height="6" rx="2" fill="url(#cockpit)" opacity=".55"/>
+
+  <!-- Window highlights -->
+  <rect x="35"  y="23" width="3" height="2" rx="1" fill="white" opacity=".5"/>
+  <rect x="48"  y="23" width="3" height="2" rx="1" fill="white" opacity=".45"/>
+  <rect x="61"  y="23" width="3" height="2" rx="1" fill="white" opacity=".4"/>
+
+  <!-- MAIN WING -->
+  <path d="M65,38 L105,42 L130,62 L100,58 L78,44 Z" fill="url(#wing1)" opacity=".9"/>
+  <!-- Wing leading edge -->
+  <path d="M65,38 L105,42 L107,40 L70,36 Z" fill="#c0d4f0"/>
+  <!-- Wing engine pod -->
+  <rect x="84" y="43" width="22" height="10" rx="3" fill="url(#engine1)"/>
+  <ellipse cx="84" cy="48" rx="4" ry="4.5" fill="#444"/>
+  <ellipse cx="84" cy="48" rx="2.5" ry="3" fill="#666"/>
+
+  <!-- TAIL WING horizontal -->
+  <path d="M128,32 L145,26 L148,30 L138,36 Z" fill="url(#wing1)" opacity=".85"/>
+  <!-- Tail fin vertical -->
+  <path d="M132,20 L148,28 L148,34 L132,34 Z" fill="#d8e8ff"/>
+  <!-- Tail fin blue stripe -->
+  <path d="M134,20 L148,28 L148,30 L136,22 Z" fill="#0033A0" opacity=".5"/>
+
+  <!-- LANDING GEAR (retracted) — just small bumps -->
+  <rect x="80" y="43" width="6" height="4" rx="1" fill="#666" opacity=".4"/>
+
+  <!-- COCKPIT glass -->
+  <path d="M18,28 Q26,22 35,22 L35,30 Q26,30 18,28 Z" fill="url(#cockpit)" opacity=".9"/>
+  <path d="M19,27 Q24,24 30,24 L30,26 Q24,26 19,27 Z" fill="white" opacity=".3"/>
+
+  <!-- NAV LIGHTS -->
+  <circle cx="130" cy="62" r="2" fill="#FF3D3D" opacity=".9">
+    <animate attributeName="opacity" values=".9;.1;.9" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="148" cy="35" r="2" fill="white" opacity=".8">
+    <animate attributeName="opacity" values=".8;.15;.8" dur=".8s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+
+  <!-- Destination postcard — floats just ahead of the plane -->
+  <div class="dest-card" style="animation-duration:18s; animation-delay:0s;">
+    
+<div class="dest-card-inner" id="dest-card">
+  <span class="dest-icon" id="dest-icon">⛰️</span>
+  <div class="dest-label" id="dest-label">MOUNTAINS</div>
+  <div class="dest-sub" id="dest-sub">ADVENTURE AWAITS</div>
+  <div class="card-arrow"></div>
+</div>
+
+  </div>
+
+  <!-- Ground strip -->
+  <div class="ground-strip"></div>
+</div>
+
+
+<div class="hdr" style="position:relative;overflow:hidden">
+<canvas id="sparks" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5"></canvas>
+  <div>
+    <div class="reg-tag">SOUTH REGION</div>
+    <div class="main-title"><span>ABC<br>CHAMPIONSHIP</span></div>
+    <div class="hdr-date">MARCH 2026 &middot; DATA: 29 MAR 2026</div>
+  </div>
+  <div class="trip-block">
+    <div class="trip-eye">PAN INDIA CONTEST</div>
+    <div class="trip-word">🏆 WIN THE TRIP</div>
+    <div style="font-size:10px;letter-spacing:3px;color:#00C9A7;margin-top:3px;font-weight:900;text-shadow:0 0 10px #00C9A755">⭐ TOP PERFORMERS ONLY ⭐</div>
+    <div class="dest-pill" style="margin-top:5px">
+      <div class="dest-pill-lbl">DESTINATION REVEAL</div>
+      <div style="font-size:11px;letter-spacing:3px;color:#FFB800;font-weight:900;animation:neonPulse 2s infinite">DESTINATION: REVEAL SOON 🗺️</div>
+
+    <div class="apr-inline">
+      <div class="ai-lbl">🏆 CONTEST ENDS</div>
+      <div class="ai-nums">
+        <div class="ai-unit"><span class="ai-num" id="apr-d">--</span><span class="ai-ulab">D</span></div>
+        <span class="ai-col">:</span>
+        <div class="ai-unit"><span class="ai-num" id="apr-h">--</span><span class="ai-ulab">H</span></div>
+        <span class="ai-col">:</span>
+        <div class="ai-unit"><span class="ai-num" id="apr-m">--</span><span class="ai-ulab">M</span></div>
+        <span class="ai-col">:</span>
+        <div class="ai-unit"><span class="ai-num" id="apr-s">--</span><span class="ai-ulab">S</span></div>
+      </div>
+      <div class="ai-dl">15 APR 2026</div>
+    </div>
+    </div>
+  </div>
+<div class="timer-block">
+  <div class="timer-box mar">
+    <div class="tb-lbl">MARCH CLOSES</div>
+    <div class="tb-nums">
+      <div class="tb-unit"><div class="tb-num" id="mar-d">--</div><div class="tb-ulab">D</div></div>
+      <div class="tb-colon">:</div>
+      <div class="tb-unit"><div class="tb-num" id="mar-h">--</div><div class="tb-ulab">H</div></div>
+      <div class="tb-colon">:</div>
+      <div class="tb-unit"><div class="tb-num" id="mar-m">--</div><div class="tb-ulab">M</div></div>
+      <div class="tb-colon">:</div>
+      <div class="tb-unit"><div class="tb-num" id="mar-s">--</div><div class="tb-ulab">S</div></div>
+    </div>
+    <div class="tb-dl">31 MAR 2026</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="ticker"><div class="ticker-inner" id="ticker-inner"></div></div>
+
+<div class="pan-strip">
+  <div class="pan-hdr">
+    <div class="pan-lbl">🌐 PAN INDIA PERFORMANCE</div>
+    <div class="pan-sub">29 Mar 2026</div>
+  </div>
+  <div class="pan-stats">
+    <div class="ps"><div class="ps-tag mtag">MTD</div><div class="ps-num" style="color:#c8deff">4397</div><div class="ps-lbl">DISBURSALS</div></div>
+    <div class="ps"><div class="ps-tag mtag">MTD</div><div class="ps-num" style="color:#FF8C00">664</div><div class="ps-lbl">ABC DONE</div></div>
+    <div class="ps"><div class="ps-tag mtag">MTD</div><div class="ps-num" style="color:#FF8C00">15.1%</div><div class="ps-lbl">ATTACH% · 18% = ENTRY</div></div>
+  </div>
+</div>
+
+<div class="reg-stats">
+    <div class="rstat"><span class="stag ytag">FTD</span><div class="slbl" style="color:#4477aa">REGION DISBURSALS FTD</div><div class="snum" style="color:#c8deff">61</div><div class="ssub">6 ABC &middot; 9.8%</div></div>
+    <div class="rstat"><span class="stag mtag">MTD</span><div class="slbl" style="color:#4477aa">REGION DISBURSALS</div><div class="snum" style="color:#c8deff">2073</div><div class="ssub">178 ABC Done</div></div>
+    <div class="rstat"><span class="stag mtag">MTD</span><div class="slbl" style="color:#4477aa">REGION ATTACH%</div><div class="snum" style="color:#FF4444">8.6%</div><div class="ssub">Top the table to lock your seat 🔒</div></div>
+</div>
+<div class="controls">
+  <div class="search-wrap">
+    <span class="si">🔍</span>
+    <input type="text" id="srch" placeholder="SEARCH NAME..." oninput="render()">
+  </div>
+  <div class="fw">
+    <span class="fl">ROLE</span>
+    <select class="fsel" id="f-role" onchange="render()">
+      <option value="">ASM + SM</option>
+      <option value="SM">SM Only</option>
+      <option value="ASM">ASM Only</option>
+    </select>
+  </div>
+  <div class="fw">
+    <span class="fl">FILTER</span>
+    <select class="fsel" id="f-elig" onchange="render()">
+      <option value="">ALL</option>
+      <option value="eligible">✅ Eligible for Contest (≥18%)</option>
+      <option value="notyet">⚡ Not Yet Eligible (&lt;18%)</option>
+    </select>
+  </div>
+  <span class="live-badge">● LIVE DATA</span>
+</div>
+<div class="result-count" id="rc"></div>
+<div id="content"></div>
+
+<div class="fomo">
+  <div>
+    <div class="fhl">🔥 RACE TO WIN</div>
+    <div class="fsub">⏰ SOUTH · YOUR SPOT IS NOT GUARANTEED</div>
+  </div>
+  <div class="fmid">
+    <div style="font-size:9px;letter-spacing:3px;color:#00C9A7;font-weight:900;text-shadow:0 0 10px #00C9A755">🏆 YOUR PATH TO THE TRIP</div>
+    <div style="font-size:18px;letter-spacing:2px;color:#fff;font-weight:900;margin:4px 0"><span style="font-size:13px;color:#aab;display:block;margin-bottom:4px">≥<span style="color:#FFB800">18%</span> attach makes you eligible</span><span style="color:#FFB800;text-shadow:0 0 20px #FFB800aa;font-size:20px">🔒 TOP RANK LOCKS YOUR SEAT</span></div>
+    <div style="font-size:10px;letter-spacing:2px;color:#FF5555;font-weight:800;animation:urgentBeat 1.5s ease-in-out infinite">⏰ EVERY POLICY COUNTS — CHECK YOUR RANK</div>
+    
+  </div>
+  <div class="fend">
+    <div style="font-size:8px;letter-spacing:3px;color:#00C9A7;font-weight:900">📊 REGION ATTACH%</div>
+    <div style="font-size:34px;color:#FF6B35;line-height:1;font-weight:900">8.6%</div>
+  </div>
+</div>
+
+</div></div>
+
+<script>
+const ASM_DATA=[{"name": "Gnanamurthy G", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 76, "mtd_a": 25, "mtd_at": 0.328947}, {"name": "Ajinkya Lad", "ftd_d": 6, "ftd_a": 1, "ftd_at": 0.166667, "mtd_d": 116, "mtd_a": 27, "mtd_at": 0.232759}, {"name": "Palak Parmar", "ftd_d": 4, "ftd_a": 2, "ftd_at": 0.5, "mtd_d": 105, "mtd_a": 17, "mtd_at": 0.161905}, {"name": "Mahesh Patel1", "ftd_d": 4, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 63, "mtd_a": 15, "mtd_at": 0.238095}, {"name": "Deepak Gupta31", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 167, "mtd_a": 14, "mtd_at": 0.083832}, {"name": "Ponnusamy R", "ftd_d": 5, "ftd_a": 1, "ftd_at": 0.2, "mtd_d": 92, "mtd_a": 15, "mtd_at": 0.163043}, {"name": "Atal Diwan", "ftd_d": 4, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 159, "mtd_a": 12, "mtd_at": 0.075472}, {"name": "Arun Namboothiri", "ftd_d": 2, "ftd_a": 1, "ftd_at": 0.5, "mtd_d": 113, "mtd_a": 10, "mtd_at": 0.088496}, {"name": "Marularadhya Hiremath", "ftd_d": 4, "ftd_a": 1, "ftd_at": 0.25, "mtd_d": 160, "mtd_a": 11, "mtd_at": 0.06875}, {"name": "KEYUR PATEL", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 123, "mtd_a": 8, "mtd_at": 0.065041}, {"name": "Ajay Kumar", "ftd_d": 4, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 131, "mtd_a": 5, "mtd_at": 0.038168}, {"name": "Mahesh Shinde11", "ftd_d": 5, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 78, "mtd_a": 4, "mtd_at": 0.051282}, {"name": "Palakurthi Praveen", "ftd_d": 5, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 158, "mtd_a": 5, "mtd_at": 0.031646}, {"name": "Jithesh R", "ftd_d": 3, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 121, "mtd_a": 3, "mtd_at": 0.024793}, {"name": "Mohan M", "ftd_d": 7, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 153, "mtd_a": 2, "mtd_at": 0.013072}, {"name": "NO ASM Mapped - PB", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 33, "mtd_a": 1, "mtd_at": 0.030303}, {"name": "Rahul Dua", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 92, "mtd_a": 2, "mtd_at": 0.021739}, {"name": "John Kennedy", "ftd_d": 4, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 133, "mtd_a": 2, "mtd_at": 0.015038}];
+const SM_DATA=[{"name": "Ameetkumar Verma", "ftd_d": 2, "ftd_a": 2, "ftd_at": 1.0, "mtd_d": 43, "mtd_a": 14, "mtd_at": 0.325581}, {"name": "Kunal Sasane", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 25, "mtd_a": 10, "mtd_at": 0.4}, {"name": "Vignesh Vignesh40", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 17, "mtd_a": 9, "mtd_at": 0.529412}, {"name": "Punith S", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 41, "mtd_a": 10, "mtd_at": 0.243902}, {"name": "Manish Bhardwaj3", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 58, "mtd_a": 8, "mtd_at": 0.137931}, {"name": "Vipul Parmar", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 17, "mtd_a": 7, "mtd_at": 0.411765}, {"name": "Neerajkumar Shukla", "ftd_d": 3, "ftd_a": 1, "ftd_at": 0.333333, "mtd_d": 31, "mtd_a": 9, "mtd_at": 0.290323}, {"name": "Devangsinh Chauhan", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 16, "mtd_a": 7, "mtd_at": 0.4375}, {"name": "Vignesh Vignesh42", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 18, "mtd_a": 6, "mtd_at": 0.333333}, {"name": "Rahul Passi", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 17, "mtd_a": 5, "mtd_at": 0.294118}, {"name": "Vikas Sharma", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 34, "mtd_a": 5, "mtd_at": 0.147059}, {"name": "Vinothbabu V", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 13, "mtd_a": 5, "mtd_at": 0.384615}, {"name": "Kalaiselvan K1", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 19, "mtd_a": 4, "mtd_at": 0.210526}, {"name": "Midhun K", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 31, "mtd_a": 4, "mtd_at": 0.129032}, {"name": "Vinod Yadav", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 37, "mtd_a": 7, "mtd_at": 0.189189}, {"name": "Raju Mishra", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 35, "mtd_a": 4, "mtd_at": 0.114286}, {"name": "Ashokkumar A", "ftd_d": 1, "ftd_a": 1, "ftd_at": 1.0, "mtd_d": 37, "mtd_a": 6, "mtd_at": 0.162162}, {"name": "Mohan M15", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 14, "mtd_a": 3, "mtd_at": 0.214286}, {"name": "Vinay Gupta3", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 18, "mtd_a": 3, "mtd_at": 0.166667}, {"name": "Sumithlal Sumithlal", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 25, "mtd_a": 3, "mtd_at": 0.12}, {"name": "Shubham Mahadik5", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 31, "mtd_a": 3, "mtd_at": 0.096774}, {"name": "Muniwala mihir M", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 37, "mtd_a": 3, "mtd_at": 0.081081}, {"name": "NO SM Mapped - PR", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 4, "mtd_a": 2, "mtd_at": 0.5}, {"name": "Prabakaran Kumar", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 14, "mtd_a": 2, "mtd_at": 0.142857}, {"name": "Kevinkumar Patel", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 19, "mtd_a": 3, "mtd_at": 0.157895}, {"name": "Shyam Shekhawat", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 23, "mtd_a": 2, "mtd_at": 0.086957}, {"name": "BINEESH P", "ftd_d": 1, "ftd_a": 1, "ftd_at": 1.0, "mtd_d": 29, "mtd_a": 3, "mtd_at": 0.103448}, {"name": "Ronak Gheewala", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 48, "mtd_a": 2, "mtd_at": 0.041667}, {"name": "Sanne Gowda", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 44, "mtd_a": 2, "mtd_at": 0.045455}, {"name": "Rahulkumar Chaudhari1", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 3, "mtd_a": 1, "mtd_at": 0.333333}, {"name": "Sivaraj Rajendiran", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 5, "mtd_a": 1, "mtd_at": 0.2}, {"name": "Elayasooryan K", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 6, "mtd_a": 1, "mtd_at": 0.166667}, {"name": "Sagar Arora", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 10, "mtd_a": 2, "mtd_at": 0.2}, {"name": "Shubham Kumar149", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 8, "mtd_a": 1, "mtd_at": 0.125}, {"name": "Yogeshkumar Rathod", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 14, "mtd_a": 1, "mtd_at": 0.071429}, {"name": "Vaibhav Kadam8", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 17, "mtd_a": 1, "mtd_at": 0.058824}, {"name": "Rabari Manilal", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 17, "mtd_a": 1, "mtd_at": 0.058824}, {"name": "Priyanck Taware", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 18, "mtd_a": 1, "mtd_at": 0.055556}, {"name": "Dennies Joseph", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 19, "mtd_a": 1, "mtd_at": 0.052632}, {"name": "Pritesh Kotak", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 21, "mtd_a": 1, "mtd_at": 0.047619}, {"name": "P Ilayaraja", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 21, "mtd_a": 1, "mtd_at": 0.047619}, {"name": "Sujith S14", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 22, "mtd_a": 1, "mtd_at": 0.045455}, {"name": "Sumit More4", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 23, "mtd_a": 1, "mtd_at": 0.043478}, {"name": "Santosh Lingampalli", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 24, "mtd_a": 2, "mtd_at": 0.083333}, {"name": "Sandip Kadam", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 26, "mtd_a": 1, "mtd_at": 0.038462}, {"name": "Rakshith M1", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 33, "mtd_a": 1, "mtd_at": 0.030303}, {"name": "ASHOK TIWARI", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 33, "mtd_a": 1, "mtd_at": 0.030303}, {"name": "Janga Ranadheer", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 31, "mtd_a": 1, "mtd_at": 0.032258}, {"name": "Jino E", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 32, "mtd_a": 1, "mtd_at": 0.03125}, {"name": "Pabbathi Ramesh", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 37, "mtd_a": 1, "mtd_at": 0.027027}, {"name": "Kasoju Mahesh1", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 36, "mtd_a": 1, "mtd_at": 0.027778}, {"name": "Mamidala Stalin", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 53, "mtd_a": 2, "mtd_at": 0.037736}, {"name": "Vijay K17", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 37, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Pardeep Pardeep10", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 40, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Shiva M", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 39, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Bajirao Desai", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 29, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Anubhav Bali", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 33, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Nikhil Sharma98", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 34, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Vishal R", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 40, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Naveen S", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 26, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Surender Kumar11", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 24, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Harsh Pal", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 31, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Nilesh Jaiswal1", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 27, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Abhimanyu Rajappan", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 24, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Rajesh R9", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 23, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Satish Kodeti", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 20, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Shakapuram Kumar", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 27, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Dileep N1", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 24, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Gaurav Mishra1", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 19, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Ashish Sharma55", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 20, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Mahesh A", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 18, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Sayanth K", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 24, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Naga Katari", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 18, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Chinthala Kumar", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 15, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Amit Naik", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 17, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Kailash Joshi", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 19, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Krishnakumar S1", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 10, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Kanaka Kasoju", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 20, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Kamalesh Shivgan", "ftd_d": 1, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 12, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Akshay Gaikwad17", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 13, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Sanjay Baluni", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 15, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Akash R16", "ftd_d": 2, "ftd_a": 1, "ftd_at": 0.5, "mtd_d": 14, "mtd_a": 1, "mtd_at": 0.071429}, {"name": "Dharmendra Shukla1", "ftd_d": 2, "ftd_a": 0, "ftd_at": 0.0, "mtd_d": 12, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Kushal Shah2", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 9, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Sagar Vithalani", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 6, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Darshitbhai Patel", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 5, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Ram satish Darapu", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 4, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Kiran Daaram", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 2, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Mahesh Kanagalla", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 3, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Raval Umang", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 4, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Manas Deep1", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 3, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Chethan M98", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 5, "mtd_a": 0, "mtd_at": 0.0}, {"name": "NO SM Mapped - PP", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 2, "mtd_a": 0, "mtd_at": 0.0}, {"name": "Azam A", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 2, "mtd_a": 0, "mtd_at": 0.0}, {"name": "NO SM Mapped - JR", "ftd_d": 0, "ftd_a": 0, "ftd_at": null, "mtd_d": 1, "mtd_a": 0, "mtd_at": 0.0}];
+const CHAMPS=["Ameetkumar Verma", "Ashokkumar A", "BINEESH P"];
+const PAGE_SIZE=15;
+let smPage=1,asmPage=1;
+
+function pAt(v){
+  if(v===null||v===undefined) return '—';
+  if(v===0) return '0.0%';
+  return (v*100).toFixed(1)+'%';
+}
+function pAtC(v){
+  if(v===null||v===undefined) return '#4a5870';
+  if(v>=0.18) return '#4da6ff';
+  if(v>=0.12) return '#FF8C00';
+  return '#FF4444';
+}
+
+function getTrophy(rank0,people){
+  if(rank0>2) return null;
+  const p=people[rank0];
+  if(!p||p.mtd_at===null||p.mtd_at===undefined||p.mtd_at<0.18) return null;
+  return ['🥇🔥','🥈','🥉'][rank0];
+}
+function countTrophies(people){
+  let c=0;
+  for(let i=0;i<Math.min(3,people.length);i++){
+    if(people[i].mtd_at!==null&&people[i].mtd_at!==undefined&&people[i].mtd_at>=0.18) c++;
+  }
+  return c;
+}
+
+function buildMTDRows(people,page,isSearching){
+  if(!people||!people.length) return '<div class="fempty">NO RESULTS FOUND</div>';
+  let displayed=people, nav='';
+  if(!isSearching&&people.length>PAGE_SIZE){
+    const pages=Math.ceil(people.length/PAGE_SIZE);
+    const start=(page-1)*PAGE_SIZE;
+    displayed=people.slice(start,start+PAGE_SIZE);
+    nav='<div class="page-nav"><span class="pg-lbl">PAGE</span>';
+    for(let i=1;i<=pages;i++) nav+=`<button class="pg-btn${i===page?' active':''}" onclick="event.stopPropagation();changePage(this,'${people===smMtdAll?'sm':'asm'}',${i})">${i}</button>`;
+    nav+=`<span class="pg-info">${start+1}–${Math.min(start+PAGE_SIZE,people.length)} of ${people.length}</span></div>`;
+  }
+  const rows=displayed.map((p,li)=>{
+    const gi=(!isSearching&&people.length>PAGE_SIZE)?(page-1)*PAGE_SIZE+li:li;
+    const trophy=getTrophy(gi,people);
+    const atc=pAtC(p.mtd_at);
+    const pos=trophy?`<div class="rpos" style="font-size:16px">${trophy}</div>`:`<div class="rpos">${gi+1}</div>`;
+    const topBg=gi===0?';background:linear-gradient(90deg,#0c1e0a,#060e1a)':gi===1?';background:linear-gradient(90deg,#0a1020,#060e1a)':gi===2?';background:linear-gradient(90deg,#100820,#060e1a)':'';
+    const rowCls=gi===0?'top1-row':gi===1?'top2-row':gi===2?'top3-row':'';
+    const nameCls=gi===0?'rname top1-name':gi===1?'rname top2-name':gi===2?'rname top3-name':'rname';
+    return `<div class="mrow ${rowCls}" style="animation-delay:${Math.min(li*25,500)}ms"><div style="flex:1;min-width:0"><div style="display:flex;align-items:center">${pos}<div class="${nameCls}">${p.name}</div></div></div><div class="rabc" style="color:${p.mtd_a>0?'#FF8C00':'#1a3a5a'}">${p.mtd_a}</div><div class="rdis">${p.mtd_d}</div><div class="rat" style="color:${atc}">${pAt(p.mtd_at)}</div></div>`;
+  }).join('');
+  return nav+rows;
+}
+
+function buildFTDRows(people){
+  if(!people||!people.length) return '<div class="fempty">NO ACTIVITY YESTERDAY</div>';
+  return people.map((p,i)=>{
+    const atc=pAtC(p.ftd_at);
+    return `<div class="frow" style="animation-delay:${Math.min(i*25,600)}ms${i<3?';background:#060e1a':''}"><div class="rpos">${i+1}</div><div class="rname">${p.name}</div><div class="frabc">${p.ftd_a}</div><div class="frdis">${p.ftd_d}</div><div class="frat" style="color:${atc}">${pAt(p.ftd_at)}</div></div>`;
+  }).join('');
+}
+
+let smMtdAll=[], asmMtdAll=[];
+function changePage(btn,section,page){
+  if(section==='sm') smPage=page;
+  else asmPage=page;
+  renderContent(smMtdAll,asmMtdAll,document.getElementById('srch').value.toLowerCase().trim()!=='');
+}
+
+const LEG_MTD=`<div class="leg"><div class="lg-pos">#</div><div class="lg-name">NAME</div><div class="lg-abc">ABC</div><div class="lg-dis">DIS</div><div class="lg-at">ATTACH%</div></div>`;
+const LEG_FTD=`<div class="leg"><div class="lg-pos">#</div><div class="lg-name">NAME</div><div class="lg-abc">ABC</div><div class="lg-dis">DIS</div><div class="lg-at">ATTACH%</div></div>`;
+
+function updateTimers(){
+  const now=new Date();
+  [['mar',new Date('2026-03-31T23:59:59')],['apr',new Date('2026-04-15T23:59:59')]].forEach(([id,end])=>{
+    const diff=Math.max(0,end-now);
+    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    ['d','h','m','s'].forEach((u,i)=>{const el=document.getElementById(id+'-'+u);if(el)el.textContent=String([d,h,m,s][i]).padStart(2,'0');});
+  });
+}
+setInterval(updateTimers,1000);updateTimers();
+
+// TICKER - yesterday's champions only
+(function(){
+  const el=document.getElementById('ticker-inner');
+  if(!el) return;
+  const fomoMsgs=[
+    "🔥 DON'T MISS THE TRIP — SECURE YOUR SPOT NOW",
+    "⚡ EVERY ABC COUNTS — ARE YOU ON THE BOARD",
+    "🚨 MARCH CLOSES SOON — PUSH YOUR NUMBERS TODAY",
+    "⚡ HIT 18% TO ENTER · CLIMB THE TABLE TO WIN 🏆",
+    "🎯 LEADERBOARD LIVE — EVERY POLICY MOVES THE TABLE"
+  ];
+  let content='';
+  if(CHAMPS.length>0){
+    const names=CHAMPS.join(' &nbsp;&nbsp;|&nbsp;&nbsp; ');
+    content+=`<span class="tick-item">🏆 YESTERDAY'S CHAMPION (100% ATTACH) 🏆</span><span class="tick-divider">»»</span><span class="tick-item" style="font-size:13px;letter-spacing:2px;font-weight:900">${names}</span><span class="tick-divider">★★★</span>`;
+  }
+  fomoMsgs.forEach(m=>{
+    content+=`<span class="tick-item">${m}</span><span class="tick-divider"> ✦ </span>`;
+  });
+  el.innerHTML=content+content;
+})();
+
+function filterList(people,q,elig){
+  let out=[...people];
+  if(q) out=out.filter(p=>p.name.toLowerCase().includes(q));
+  if(elig==='eligible') out=out.filter(p=>p.mtd_at!=null&&p.mtd_at>=0.18);
+  else if(elig==='notyet') out=out.filter(p=>p.mtd_at===null||p.mtd_at<0.18);
+  return out;
+}
+
+function renderContent(smMtd,asmMtd,isSearching){
+  smMtdAll=smMtd; asmMtdAll=asmMtd;
+  const roleF=document.getElementById('f-role').value;
+  const smTrophies=countTrophies(smMtd),asmTrophies=countTrophies(asmMtd);
+  const smTL=smTrophies>0?` &nbsp;·&nbsp; TOP ${smTrophies} 🏆`:'';
+  const asmTL=asmTrophies>0?` &nbsp;·&nbsp; TOP ${asmTrophies} 🏆`:'';
+  let html='';
+  if(roleF===''||roleF==='SM'){
+    const smFtd=SM_DATA.filter(p=>p.ftd_a>0).sort((a,b)=>b.ftd_a-a.ftd_a||((b.ftd_at||0)-(a.ftd_at||0)));
+    html+=`<div class="sec-hdr sm-hdr"><div class="sec-lbl">SM LEADERBOARD</div><div class="sec-sub">Sales Manager &middot; 29 Mar 2026${smTL}</div><div class="role-pill pill-sm">SM</div></div><div class="twocol"><div class="colL"><div class="col-hdr"><div class="col-title">📅 YESTERDAY'S PERFORMERS</div></div>${LEG_FTD}${buildFTDRows(smFtd)}</div><div><div class="col-hdr"><div class="col-title">📊 MTD RANKING</div></div>${LEG_MTD}${buildMTDRows(smMtd,smPage,isSearching)}</div></div>`;
+  }
+  if(roleF===''||roleF==='ASM'){
+    const asmFtd=ASM_DATA.filter(p=>p.ftd_a>0).sort((a,b)=>b.ftd_a-a.ftd_a||((b.ftd_at||0)-(a.ftd_at||0)));
+    html+=`<div class="sec-hdr asm-hdr"><div class="sec-lbl">ASM LEADERBOARD</div><div class="sec-sub">Area Sales Manager &middot; 29 Mar 2026${asmTL}</div><div class="role-pill pill-asm">ASM</div></div><div class="twocol"><div class="colL"><div class="col-hdr"><div class="col-title">📅 YESTERDAY'S PERFORMERS</div></div>${LEG_FTD}${buildFTDRows(asmFtd)}</div><div><div class="col-hdr"><div class="col-title">📊 MTD RANKING</div></div>${LEG_MTD}${buildMTDRows(asmMtd,asmPage,isSearching)}</div></div>`;
+  }
+  document.getElementById('content').innerHTML=html;
+}
+
+function render(){
+  const q=document.getElementById('srch').value.toLowerCase().trim();
+  const roleF=document.getElementById('f-role').value;
+  const eligF=document.getElementById('f-elig').value;
+  const isSearching=q.length>0;
+  if(isSearching){smPage=1;asmPage=1;}
+  const smF =(roleF===''||roleF==='SM') ?filterList(SM_DATA,q,eligF):[];
+  const asmF=(roleF===''||roleF==='ASM')?filterList(ASM_DATA,q,eligF):[];
+  const smMtd=[...smF].sort((a,b)=>b.mtd_a-a.mtd_a||b.mtd_at-a.mtd_at);
+  const asmMtd=[...asmF].sort((a,b)=>b.mtd_a-a.mtd_a||b.mtd_at-a.mtd_at);
+  document.getElementById('rc').textContent=(smF.length+asmF.length)+' PEOPLE SHOWN &nbsp;·&nbsp; SM: '+smF.length+' &nbsp;·&nbsp; ASM: '+asmF.length;
+  renderContent(smMtd,asmMtd,isSearching);
+}
+render();
+
+// SPARK PARTICLES
+(function(){
+  const c=document.getElementById('sparks');
+  if(!c) return;
+  const ctx=c.getContext('2d');
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  resize();
+  const pts=Array.from({length:22},()=>({
+    x:Math.random()*c.width,y:c.height*(.3+Math.random()*.7),
+    vx:(Math.random()-.5)*.4,vy:-(Math.random()*.6+.3),
+    life:Math.random(),size:Math.random()*1.5+.5,
+    color:Math.random()>.5?'#FFB800':'#FF6B00'
+  }));
+  function frame(){
+    ctx.clearRect(0,0,c.width,c.height);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.life-=.006;
+      if(p.life<=0){p.life=1;p.x=Math.random()*c.width;p.y=c.height;}
+      ctx.globalAlpha=p.life*.8;
+      ctx.fillStyle=p.color;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+
+// ── DESTINATION CAROUSEL ──
+(function(){
+  const stops = [
+    {icon:"⛰️", label:"MOUNTAINS", sub:"ADVENTURE AWAITS"},
+    {icon:"🏖️", label:"BEACH",     sub:"SUN · SAND · SEA"},
+    {icon:"☀️", label:"SUN BATH",  sub:"RELAX & RECHARGE"},
+    {icon:"🚂", label:"TRAIN RIDE", sub:"SCENIC EXPRESS"},
+    {icon:"🚕", label:"CITY TOUR",  sub:"EXPLORE THE STREETS"},
+    {icon:"🌊", label:"OCEAN",      sub:"FEEL THE WAVES"},
+    {icon:"🗺️", label:"EXPLORE",   sub:"YOUR TRIP, YOUR STORY"},
+    {icon:"🏔️", label:"PEAKS",     sub:"CONQUER THE TOP"},
+    {icon:"🌅", label:"SUNRISE",    sub:"NEW DAY, NEW WIN"},
+  ];
+  let idx = 0;
+  function rotate(){
+    idx = (idx + 1) % stops.length;
+    const s = stops[idx];
+    const ic = document.getElementById('dest-icon');
+    const lb = document.getElementById('dest-label');
+    const sb = document.getElementById('dest-sub');
+    if(ic){ ic.style.transform='scale(0)'; ic.style.opacity='0'; }
+    setTimeout(()=>{
+      if(ic){ic.textContent=s.icon; ic.style.transform='scale(1)'; ic.style.opacity='1';}
+      if(lb) lb.textContent = s.label;
+      if(sb) sb.textContent = s.sub;
+    },300);
+    if(ic){ ic.style.transition='transform .3s ease, opacity .3s ease'; }
+  }
+  setInterval(rotate, 4000);
+})();
+
+</script>
+</body></html>
